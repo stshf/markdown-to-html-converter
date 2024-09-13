@@ -31,7 +31,6 @@ def parse_arguments() -> argparse.Namespace:
 def main() -> None:
     args = parse_arguments()
     markdown_contents = read_contents(args.input_path)
-    write_contents("/app/output/log.txt", markdown_contents)
     html = convert_markdown_to_html(markdown_contents)
     write_contents(args.output_path, html)
 
