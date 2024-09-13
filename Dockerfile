@@ -8,25 +8,27 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
+    python3-venv \
     && rm -rf /var/lib/apt/lists/*
-
-# Python3をデフォルトのpythonとして設定
-RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # 作業ディレクトリを設定
 WORKDIR /app
 
-# ソースコードをコピー
-COPY src/ /app/src/
+# ファイルを個別にコピー
+COPY /src/markdown_to_html_converter.py /app/src/
+COPY input/sample.md /app/input/
+COPY requirements.txt /app/
 
-# requirements.txtをコピー（空でも問題ありません）
+# requirements.txtをコピー
 COPY requirements.txt .
 
-# 必要なパッケージをインストール
+# 仮想環境を作成し、その中に必要なパッケージをインストール
+RUN python3 -m venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
 RUN if [ -s requirements.txt ]; then pip3 install --no-cache-dir -r requirements.txt; fi
 
 # Pythonのバッファリングを無効にして、ログをリアルタイムで表示
 ENV PYTHONUNBUFFERED=1
 
-# コンテナ起動時にTestシェルスクリプトを実行
-# CMD [""]
+# コンテナ起動時にPythonスクリプトを実行
+CMD ["python3", "/app/src/markdown_to_html_converter.py", "/app/input/sample.md", "/app/output/sample.html"]
