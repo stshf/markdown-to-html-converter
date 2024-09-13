@@ -1,16 +1,15 @@
 # markdown-to-html-converter
-これは、`.md`の内容をhtmlに変換するコマンドラインツールです。
-このプロジェクトは、プログラミング学習サイト[Recursion](https://recursionist.io/)の課題として作成されました。
+
+このツールは、Markdown (.md) ファイルの内容をHTMLに変換するコマンドラインユーティリティです。Recursionのプログラミング学習サイトの課題として開発されました。
 
 ## 課題の出典
 
 この課題は、Recursionの以下のレッスンから出題されています：
-[https://recursionist.io/dashboard/course/21/lesson/1087](https://recursionist.io/dashboard/course/21/lesson/1087)
-※有料プラン
+https://recursionist.io/dashboard/course/21/lesson/1087 (※有料プラン)
 
 ## 機能
 
-- markdown -> htmlへの変換
+- Markdown形式のテキストをHTML形式に変換
 
 ## 必要条件
 
@@ -20,22 +19,39 @@
 ## インストール方法
 
 1. このリポジトリをクローンします：
-   ```
-   git clone https://github.com/yourusername/markdown-to-html-converter.git
-   ```
+
+```bash
+git clone https://github.com/yourusername/markdown-to-html-converter.git
+```
+
 2. プロジェクトディレクトリに移動します：
-   ```
-   cd markdown-to-html-converter
-   ```
+
+```bash
+cd markdown-to-html-converter
+```
+
+3. 必要なライブラリをインストールします：
+
+```bash
+pip install markdown==3.4.1
+```
 
 ## 使用方法
 
 基本的な使用構文は以下の通りです：
 
-```
+```bash
 python markdown_to_html_converter.py <入力ファイルパス> <出力ファイルパス>
 ```
-## markdownとHTML変換対応
+
+例：
+
+```bash
+python markdown_to_html_converter.py input.md output.html
+```
+
+## MarkdownとHTML変換対応表
+
 | Markdown                              | HTML                                                  |
 |---------------------------------------|-------------------------------------------------------|
 | `# 見出し h1`                         | `<h1>見出し h1</h1>`                                  |
@@ -47,11 +63,16 @@ python markdown_to_html_converter.py <入力ファイルパス> <出力ファイ
 | `**太字**`                            | `<strong>太字</strong>`                               |
 | `- リスト１`<br>`- リスト２`          | `<ul>`<br>`  <li>リスト１</li>`<br>`  <li>リスト２</li>`<br>`</ul>` |
 | `1. 番号リストA`<br>`1. 番号リストB`  | `<ol>`<br>`  <li>番号リストA</li>`<br>`  <li>番号リストB</li>`<br>`</ol>` |
-| \| Header1 \| Header2 \|<br>\|---------\|---------\|<br>\| cell    \| cell    \|<br>\| cell    \| cell    \| | `<table>`<br>`  <thead>`<br>`    <tr>`<br>`      <th>Header1</th>`<br>`      <th>Header2</th>`<br>`    </tr>`<br>`  </thead>`<br>`  <tbody>`<br>`    <tr>`<br>`      <td>cell</td>`<br>`      <td>cell</td>`<br>`    </tr>`<br>`    <tr>`<br>`      <td>cell</td>`<br>`      <td>cell</td>`<br>`    </tr>`<br>`  </tbody>`<br>`</table>` |
+| （表のMarkdown構文）                   | （対応するHTML表構造）                                |
 
 ## エラー処理
 
-このツールには、ファイル操作に関する基本的なエラー処理が含まれています。ファイルの読み書き中にエラーが発生した場合、適切なエラーメッセージが表示されます。
+このツールには、基本的なエラー処理が実装されています。
+エラーが発生した場合、適切なエラーメッセージがコンソールに表示されます。
+
+## 問題報告
+
+バグを発見した場合や新機能の提案がある場合は、GitHubの[Issues](https://github.com/yourusername/markdown-to-html-converter/issues)ページで報告してください。
 
 ## ライセンス
 
@@ -59,4 +80,4 @@ python markdown_to_html_converter.py <入力ファイルパス> <出力ファイ
 
 ## 謝辞
 
-このプロジェクトは、[Recursion](https://recursionist.io/)のカリキュラムの一部として作成されました。プログラミング学習の機会を提供してくださったRecursionに感謝いたします。
+このプロジェクトは、Recursionのカリキュラムの一部として作成されました。プログラミング学習の機会を提供してくださったRecursionに感謝いたします。
